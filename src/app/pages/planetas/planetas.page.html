@@ -1,0 +1,45 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>planetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">planetas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let planeta of planetasRecientes">
+    <ion-card-header>
+      <img
+        *ngIf="planeta.imagen"
+        [src]="planeta.imagen"
+        alt="Imagen de {{ planeta.name }}"
+        class="card-image"
+      />
+      <ion-card-subtitle>Terreno: {{planeta.terrain}}</ion-card-subtitle>
+      <ion-card-title>{{planeta.name}}</ion-card-title>
+      <ion-card-subtitle>Clima: {{planeta.climate}}</ion-card-subtitle>
+
+        <ion-card-content>Population: {{planeta.population}}</ion-card-content>
+
+      <ion-button (click)="verDetalle(planeta)" fill="clear">Ver detalles</ion-button>
+
+
+    </ion-card-header>
+  </ion-card>
+</ion-content>

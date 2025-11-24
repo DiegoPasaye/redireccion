@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle del Planeta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="planeta">
+
+    <img
+      *ngIf="planeta.imagen"
+      [src]="planeta.imagen"
+      alt="Imagen de {{ planeta.name }}"
+      class="modal-image"
+    />
+
+    <ion-label>
+      <h1>{{ planeta.name | titlecase }}</h1>
+    </ion-label>
+
+    <ion-card>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="thermometer-outline" slot="start" color="tertiary"></ion-icon>
+            <ion-label>Clima</ion-label>
+            <ion-note slot="end" color="primary">{{ planeta.climate }}</ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf-outline" slot="start" color="success"></ion-icon>
+            <ion-label>Terreno</ion-label>
+            <ion-note slot="end" color="primary">{{ planeta.terrain }}</ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
+            <ion-label>Población</ion-label>
+            <ion-note slot="end" color="primary">{{ planeta.population }}</ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Diámetro</ion-label>
+            <ion-note slot="end">{{ planeta.diameter }} km</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Gravedad</ion-label>
+            <ion-note slot="end">{{ planeta.gravity }}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Periodo Orbital</ion-label>
+            <ion-note slot="end">{{ planeta.orbital_period }} días</ion-note>
+          </ion-item>
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-button (click)="regresar()" expand="block" fill="outline" class="ion-margin">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      Regresar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
