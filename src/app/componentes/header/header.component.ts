@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 interface Elemento{
   icono: string;
@@ -6,14 +6,13 @@ interface Elemento{
   ruta: string;
 }
 
-
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
   standalone: false,
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class AppComponent {
+export class HeaderComponent  implements OnInit {
   elementos: Elemento[] = [
     {
       icono: 'newspaper-outline',
@@ -27,5 +26,9 @@ export class AppComponent {
     },
   ]
   @Input() titulo="planetas"
-  constructor() {}
+
+  constructor() { }
+
+  ngOnInit() {}
+
 }

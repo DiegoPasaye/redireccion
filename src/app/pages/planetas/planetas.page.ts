@@ -4,13 +4,14 @@ import { Planetas } from 'src/app/services/planetas';
 import { ModalController, IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/componentes/modal/modal.component';
+import { ComponentesModule } from 'src/app/componentes/componentes-module';
 
 @Component({
   selector: 'app-planetas',
   templateUrl: './planetas.page.html',
   styleUrls: ['./planetas.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, ComponentesModule],
 })
 export class PlanetasPage implements OnInit {
   planetasRecientes: PlanetaApi[] = [];
