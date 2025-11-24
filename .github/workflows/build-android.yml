@@ -1,0 +1,50 @@
+name: Construir APK Android
+
+on:
+  push:
+    branches:
+      - main  # O 'master', asegúrate de cómo se llama tu rama principal
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Instalar Ionic CLI
+        run: npm install -g @ionic/cli
+
+      - name: Construir proyecto Ionic (Web)
+        run: ionic build
+
+      - name: Sincronizar Capacitor
+        run: npx cap sync android
+
+      - name: Dar permisos a Gradle
+        run: chmod +x android/gradlew
+
+      - name: Generar APK (Debug)
+        run: cd android && ./gradlew assembleDebug
+
+      - name: Subir APK como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
